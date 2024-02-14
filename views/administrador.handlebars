@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+</head>
+<body> 
+    <header>
+        <br>
+        <h1>Administrador</h1>
+    </header>
+    <div class="dropdown">
+        <button onclick="toggleDropdown()" class="dropbtn" onmouseover="changeImage()" onmouseout="resetImage()">INDICE <img src="/img/caret-abajo.png" id="flecha"></button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#consultarPrecios">Consultar Precios</a>
+            <a href="#modificarPrecios">Modificar Precios</a>
+            <a href="#listadoProductos">Listado de Productos</a>
+            <a href="#agregarProductos">Agregar Productos</a>
+            <a href="#listadoUsuarios">Listado de Usuarios</a>
+            <a href="#modificarClientes">Modificar Usuarios</a>
+            <a href="#crear-usuarios">Crear Usuarios</a>
+            <a href="#eliminarClientes">Eliminar Usuarios</a>
+            <a href="#eliminarProductos">Eliminar Productos</a>
+        </div>
+    </div>
+    <div style="padding: 20px;">
+        
+        <div style="margin: 25px;" id="consultar-precios">
+            <h1 id="consultarPrecios">Consultar Precios</h1>
+            <button type="button" onclick="tablaCF()"><strong>Consumidor Final</strong></button>
+            <button type="button" onclick="tablaV()"><strong>Vinoteca</strong></button>
+            <button type="button" onclick="tablaDis()"><strong>Distribuidora</strong></button>
+            <div id="tablaAdmin">
+
+            </div>
+        </div>
+        <hr>
+        <div style="margin: 25px;" id="modificar-precios">
+            <h1 id="modificarPrecios">Modificar Precios</h1>
+            <form>
+                <label for="" class="form-label">Lista</label><br>
+                <select id="selectLista" class="select-box">
+                    <option value="1">Consumidor Final</option>
+                    <option value="2">Vinoteca</option>
+                    <option value="3">Distribuidora</option>                
+                </select><br>
+
+                <label for="" class="form-label">Producto</label><br>
+                <select id="selectProductos" class="select-box">
+                    {{#each productos}}
+                        <option value="{{this.id_producto}}">{{this.nombreProducto}}, {{this.bodega}}</option>
+                    {{/each}}
+                </select><br>
+
+                <input type="number" class="inputAdmin" placeholder="Precio" id="nuevoPrecio" required><br>
+                <button onclick="modificarPrecio()" class="btn-admin" type="button">Guardar cambios</button>
+            </form>
+        </div>
+        <hr>
+        <div style="margin: 25px;" id="consultar-productos">
+            <h1 id="listadoProductos">Listado de Productos</h1>
+            <button type="button" onclick="tablaProductos()" class="btn-admin"><strong>Mostrar Tabla</strong></button><br>
+            <div id="tablaProductos">
+
+            </div>
+        </div>
+        <hr>
+        <div style="margin: 25px;">
+            <form>
+                <h1 id="agregarProductos">Agregar Productos</h1>
+                <input type="text" class="inputAdmin" placeholder="Nombre Producto" id="nombreProducto" required> <br>
+                <input type="text" class="inputAdmin" placeholder="Bodega" id="bodega" required> <br>
+                <button onclick="agregarProducto()" class="btn-admin" type="button">Guardar cambios</button>
+            </form>
+            <form>
+                <h2 style="margin-top: 20px;">Agregar Precio</h2>
+                <label for="" class="form-label">Lista</label><br>
+                <select id="selectLista2" class="select-box">
+                    <option value="1">Consumidor Final</option>
+                    <option value="2">Vinoteca</option>
+                    <option value="3">Distribuidora</option>                
+                </select><br>
+
+                <label for="" class="form-label">Producto</label><br>
+                <select id="selectProductos2" class="select-box">
+                    {{#each productos}}
+                        <option value="{{this.id_producto}}">{{this.nombreProducto}}, {{this.bodega}}</option>
+                    {{/each}}
+                </select><br>
+
+                <input type="number" class="inputAdmin" placeholder="Precio" id="nuevoPrecio2" required><br>
+                <button onclick="agregarPrecio()" class="btn-admin" type="button">Guardar cambios</button>
+            </form>
+        </div>
+        <hr>
+
+        <div style="margin: 25px;" id="listado-usuarios">
+            <h1 id="listadoUsuarios">Listado de Usuarios</h1>
+            <button type="button" onclick="tablaUsuarios()" class="btn-admin"><strong>Mostrar Tabla</strong></button><br>
+            <div id="tablaUsuarios">
+
+            </div>
+        </div>
+        <hr>
+
+        <div style="margin: 25px;" id="modificar-usuarios">
+            <form>
+                <h1 id="modificarClientes">Modificar Usuarios</h1>
+
+                <select id="selectUsuarios" class="select-box" onchange="leerUsuarios()">
+                    <option value="seleccione">Seleccione un cliente</option>
+                    {{#each usuarios}}
+                        <option value="{{this.id_cliente}}">{{this.nombreCliente}}</option>
+                    {{/each}}
+                </select><br>
+                <label for="" class="form-label">Nombre del cliente</label><br>
+                <input type="text" class="inputAdmin" 
+                placeholder="Nombre del cliente" id="nombreMod" required><br>
+
+                <label for="" class="form-label">Usuario</label><br>
+                <input type="text" class="inputAdmin" placeholder="Usuario" id="usuarioMod" required><br>
+
+                <label for="" class="form-label">Contraseña</label><br>
+                <input type="text" class="inputAdmin" placeholder="Contraseña" id="contraseñaMod" required><br>
+
+                <label for="" class="form-label">Es administrador</label><br>
+                <select id="selectAdmin" class="select-box">
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select><br>
+
+                <label for="" class="form-label">Lista de precios asignada</label><br>
+                <select id="selectLista3" class="select-box">
+                    <option value="1">Consumidor Final</option>
+                    <option value="2">Vinoteca</option>
+                    <option value="3">Distribuidora</option>                
+                </select><br>
+
+                <button type="button" onclick="modificarUsuarios()" class="btn-admin"><strong>Guardar Cambios</strong></button>
+                
+            </form>
+
+        </div>
+        <hr>
+        <div style="margin: 25px;" id="crear-usuarios">
+            <form>
+                <h1 id="modificarClientes">Crear Usuarios</h1>
+
+                <input type="text" class="inputAdmin" 
+                placeholder="Nombre del cliente" id="nuevoNombre" required><br>
+
+                <input type="text" class="inputAdmin" placeholder="Usuario" id="nuevoUsuario" required><br>
+
+                <input type="text" class="inputAdmin" placeholder="Contraseña" id="nuevaContraseña" required><br>
+
+                <label for="" class="form-label">Es administrador</label><br>
+                <select id="selectAdminNuevo" class="select-box">
+                    <option value="0">No</option>
+                    <option value="1">Si</option>
+                </select><br>
+
+                <label for="" class="form-label">Lista de precios asignada</label><br>
+                <select id="selectLista4" class="select-box">
+                    <option value="1">Consumidor Final</option>
+                    <option value="2">Vinoteca</option>
+                    <option value="3">Distribuidora</option>                
+                </select><br>
+
+                <button type="button" onclick="crearUsuarios()" class="btn-admin"><strong>Guardar Cambios</strong></button>
+                
+            </form>
+
+        </div>
+        <hr>
+        <div style="margin: 25px;">
+            <form>
+                <h1 id="eliminarClientes">Eliminar Usuarios</h1>
+
+                <select id="selectUsuarios3" class="select-box">
+                    <option value="seleccione">Seleccione un cliente</option>
+                    {{#each usuarios}}
+                        <option value="{{this.id_cliente}}">{{this.nombreCliente}}</option>
+                    {{/each}}
+                </select><br>
+
+                <button type="button" onclick="eliminarUsuarios()" class="btn-admin"><strong>Eliminar Usuario</strong></button>
+                
+            </form>
+        </div>
+        <hr>
+        <div style="margin: 25px;">
+            <h1 id="eliminarProductos">Eliminar Productos</h1>
+            <h3>Por producto</h3>
+            <select id="selectProductos3" class="select-box">
+                <option>Seleccione un producto</option>
+                    {{#each productos}}
+                        <option value="{{this.id_producto}}">{{this.nombreProducto}}, {{this.bodega}}</option>
+                    {{/each}}
+            </select><br>
+            <button type="button" onclick="eliminarPorProducto()" class="btn-admin"><strong>Eliminar Producto</strong></button><br>
+
+            <h3>Por bodega</h3>
+            <select id="selectProductos4" class="select-box">
+                <option>Seleccione un producto</option>
+                    {{#each bodegas}}
+                        <option value="{{this.bodega}}">{{this.bodega}}</option>
+                    {{/each}}
+            </select><br>
+            <button type="button" onclick="eliminarPorBodega()" class="btn-admin"><strong>Eliminar Productos</strong></button>
+        </div>
+
+
+
+    </div>
+    
+    
+    
+    
+</body>
+</html>

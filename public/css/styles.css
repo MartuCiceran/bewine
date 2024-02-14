@@ -1,0 +1,473 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*LOGIN*/
+
+#body-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background: linear-gradient(to right, #117021 70%, #ad1c8e 30%); */
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* #img-bodegas{
+    width: 70%;
+    height: 100%;
+    background-color: green;
+} */
+
+#fondo{
+    width: 30%;
+    height: 100%;
+    background-color: #891616;
+    color: #fff;
+    display: flex;
+    justify-content: center;  /* Añadido para centrar horizontalmente */
+    align-items: center;
+} 
+
+#div-login{
+    background-color: #FFFDEF;
+    color: #891616;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 250px;  /* Añadido para limitar el ancho si es necesario */
+    width: 100%;  /* Añadido para ocupar todo el ancho del contenedor */
+    padding: 20px;  /* Añadido para un mejor aspecto visual */
+    box-sizing: border-box;  /* Añadido para incluir el padding en el ancho total */
+    border-radius: 25px;
+} 
+
+
+#div-login img {
+    width: 60px;
+}
+
+h4 {
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;  /* Añadido para centrar el texto dentro del form */
+}
+
+
+input{
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #FFFDEF;
+    color: #891616;
+    border: 2px solid #891616;
+    border-radius: 15px;
+    font-weight: 1000;
+    letter-spacing: .5px;
+    font-size: 0.9rem;
+}
+
+
+input::placeholder{
+    color: #532222;
+}
+
+@media screen and (max-width: 600px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #img-bodegas,
+    #div-login {
+        width: 100%;
+    }
+} 
+
+
+/*------------------------------------------*/
+
+/*SLIDER*/
+
+.position{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slider{
+    background-image: url(/img/1.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 70%;
+    animation: animate 25s infinite;
+}
+
+@keyframes animate {
+    20% {
+        background-image: url(/img/2.jpg);
+        background-size: cover;
+    }
+    40% {
+        background-image: url(/img/3.jpg);
+        background-size: cover;
+    }
+    60% {
+        background-image: url(/img/4.jpg);
+        background-size: cover;
+    }
+    80% {
+        background-image: url(/img/5.jpg);
+        background-size: cover;
+    }
+    100% {
+        background-image: url(/img/6.jpg);
+        background-size: cover;
+    }
+}
+
+
+/*----------------------------------------------*/
+
+
+/*PAG PRINCIPAL*/
+
+header {
+    background-color: #891616;
+    color: #fff;
+    text-align: center;
+    width: 100%; /* Opcional, para ocupar todo el ancho */
+    height: 120px;
+}
+
+#products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.product {
+    flex: 0 0 calc(23% - 0px);
+    margin: 10px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 30px;
+    border-color: #891616;
+    text-align: center; /* Añadido */
+}
+
+h2{
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+h1{
+    /* text-align: center; */
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.nombreBodega{
+    color: #891616;
+}
+
+button, .botones {
+    background-color: #891616;
+    color: #FFFDEF;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 15px;
+    text-transform: uppercase;
+    
+}
+.btn-admin{
+    margin-bottom: 30px;
+}
+
+.botones:hover {
+    background-color: #c22222;
+}
+
+button:hover {
+    background-color: #c22222;
+}
+
+/*CARRITO*/
+
+#cart {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #FFFDEF;
+    overflow-y: auto;
+    max-height: 500px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart-items li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+#cart-total {
+    font-weight: bold;
+}
+
+.btn-cart{
+    margin-left: 20px;
+}
+
+
+
+#cart-icon {
+    position: relative;
+    cursor: pointer;
+    
+}
+
+#cart-icon img {
+    width: 35px; /* Ajusta el tamaño del icono según sea necesario */
+}
+
+#cart-counter {
+    background-color: red;
+    color: white;
+    border-radius: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/*--------------------------------*/
+
+/*BUSQUEDA*/
+
+.search-container {
+    position: relative;
+}
+
+.search-input {
+    padding: 10px;
+    padding-left: 40px;
+    border: 2px solid #c7c5b5;
+    border-radius: 30px;
+    width: 300px;
+    box-sizing: border-box;
+    margin: 30px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/*--------------------------------*/
+
+/*TABLAS ADMIN*/
+
+.container {
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 600px;
+    min-width: 300px;
+    max-height: 300px; /* Altura máxima de la tabla */
+    overflow-y: auto; /* Añade un scroll vertical si es necesario */
+}
+th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2;
+}
+
+h3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:#891616 ;
+    font-weight: 800;
+}
+
+
+/*-----------------------------*/
+
+/*ADMIN*/
+
+.select-box{
+    width: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.inputAdmin{
+    background-color: white;
+    border: 1px solid #c7c5b5;
+    border-radius: 10px;
+    width: 200px;
+    box-sizing: border-box;
+    color: black;
+}
+
+.inputAdmin::placeholder{
+    color: #aaa89a;
+}
+
+
+/*------------------------------*/
+
+/*INDICE ADMIN*/
+
+.dropbtn {
+    background-color: #ffffff;
+    color:#891616;
+    border-color: #891616;
+    /* padding: 12px; */
+    font-size: 16px;
+    border: 2px solid;
+    cursor: pointer;
+    font-weight: 900;
+    margin-top: 40px;
+}
+
+
+.dropbtn:hover {
+    background-color: #891616;
+    color:#e7e6dd;
+}
+
+/* Estilos del contenedor del dropdown */
+.dropdown {
+    margin-left: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Estilos de los enlaces dentro del dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: 200px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #c7c7c7;
+}
+
+/* Mostrar el dropdown cuando se hace clic en el botón */
+.show {
+    display: block;
+}
+
+#flecha {
+    width: 10px;
+    margin-left: 5px;
+}
+
+/*----------*/
+
+#mailEnviado {
+    display: none;
+    background-color: #891616;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+#mailEnviado h1, #mailEnviado h4{
+    color:#f2f2f2
+}
+
+#mailEnviado button{
+    background-color: #f2f2f2;
+    color: #891616;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+#mailEnviado button:hover {
+    background-color: #aaa89a;
+}
+
+.fade-out {
+    animation-name: fadeOut;
+    animation-duration: 0.5s;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

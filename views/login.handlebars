@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body id="body-login">
+    <div class="slider">
+        <div class="position"></div>
+    </div>
+
+   <div id="fondo" style="align-items: center;">
+        <div id="div-login" style="align-items: center;">
+            <img src="/img/usuario.png">
+            <form action="/login" method="POST" id="login">
+                <h4>LOGIN</h4>
+                <div>
+                    <input type="text" id="usuarioId" name="usuario" value="" placeholder="Usuario">
+                </div>
+                <div>
+                    <input type="password" id="passwordId" name="contraseña" placeholder="Contraseña">
+                </div>
+                <div>
+                    <input type="button" onclick="login()" class="botones" value="Ingresar">
+                </div>
+            </form>
+            <form action="/pagPrincipal" method="POST" id="form-login"></form>
+            <form action="/administrador" method="POST" id="form-admin"></form>
+        </div>
+        
+   </div>
+</body>
+</html>
