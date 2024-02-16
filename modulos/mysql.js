@@ -8,7 +8,7 @@ const SQL_CONFIGURATION_DATA =
 {
 	//host: "192.168.0.58", //IP privada del servidor del colegio
 	//host: "186.18.137.196", //IP pública del servidor del colegio
-	host: "ec2-34-211-200-85.us-west-2.compute.amazonaws.com",
+	// host: "ec2-34-211-200-85.us-west-2.compute.amazonaws.com",
 	user: "ramiro",
 	password: "martu123",
 	database: "BEWINE",
